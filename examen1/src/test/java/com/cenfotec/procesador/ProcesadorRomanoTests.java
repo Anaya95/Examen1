@@ -5,17 +5,17 @@ import static org.junit.Assert.*;
 
 public class ProcesadorRomanoTests {
 	
-	/*@Test
+	@Test
 	public void testStringVacio() {
 		ProcesadorRomano procRomano = new ProcesadorRomano();
 		int romanoEnNum = procRomano.procesar("");
 		assertEquals(romanoEnNum,0);
-	}*/
+	}
 	
 	@Test
 	public void testValoresLetras() {
 		
-		String [][] valoresPruebas={{"I","1"},{"II","2"},{"III","3"},{"IIII","Error"},
+		String [][] valoresPruebas={{"I","1"},{"II","2"},{"III","3"},{"IIII","-1"},
 									{"V","5"},{"X","10"},{"L","50"},{"C","100"},
 									{"D","500"},{"M","1000"}};
 		
@@ -27,7 +27,7 @@ public class ProcesadorRomanoTests {
 			romanoEnNum = procRomano.procesar(valoresPruebas[i][0]);
 			assertEquals(romanoEnNum,Integer.parseInt(valoresPruebas[i][1]));
         }
-	}/*
+	}
 	
 	@Test
 	public void testValoresPruebas() {
@@ -56,18 +56,17 @@ public class ProcesadorRomanoTests {
 		for(int i=0; i<valoresPruebas.length; i++) {
 			
 			romanoEnNum = procRomano.procesar(valoresPruebas[i]);
-			assertEquals("Error",romanoEnNum);
+			assertEquals(romanoEnNum,-1);
         }
 	}
 	
-	@Test
+	/*@Test
 	public void testLetrasDesc() {
 		
 		int romanoEnNum;
 		ProcesadorRomano procRomano = new ProcesadorRomano();
-		String error = "";
 		
 		romanoEnNum = procRomano.procesar("XXL");
-		assertEquals("Error",error);
+		assertEquals(-1,romanoEnNum);
 	}*/
 }
