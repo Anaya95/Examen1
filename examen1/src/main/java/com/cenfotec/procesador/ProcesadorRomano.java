@@ -2,56 +2,32 @@ package com.cenfotec.procesador;
 
 public class ProcesadorRomano {
 	
-	private String numRomano;
+	private static String [][] valsLetrasRomanas = {{"I","1"},{"V","5"},{"X","10"},{"L","50"},{"C","100"},{"D","500"},{"M","1000"}};
 	
-	public ProcesadorRomano() {
-		numRomano = "I";
-	}
-	
-	public ProcesadorRomano(String pnumRomano) {
-		numRomano = pnumRomano;
-	}
-	
-	public String getNumRomano(){
-		return this.numRomano;
+	public String [][] getValoresLetras(){
+		return valsLetrasRomanas;
 	}
 	
 	public int procesar(String pnumRomano){
 		
-		String [][] valoresLetras = {{"I","1"},{"II","2"},{"III","3"},{"V","5"},{"X","10"},
-				 					{"L","50"},{"C","100"},{"D","500"},{"M","1000"}};
-		 
-		String [] numDescompuesto = pnumRomano.split("");
-		int numRetorno = 0;
+		int romanoANum = 0;
 		
-		for(int i=0; i<numDescompuesto.length; i++) {
+		if(pnumRomano == "") {
+			romanoANum = 0;
+		} else {
+			String [] numDescompuesto = pnumRomano.split("");
 			
-			numRetorno = numRetorno + Integer.parseInt(numDescompuesto[i]);
-        }
+			System.out.println(numDescompuesto.length);
+			
+			for(int i=0; i<numDescompuesto.length; i++) {
+				for(int h=0; h<valsLetrasRomanas.length; h++) {
+					if(numDescompuesto[i] == valsLetrasRomanas[h][0]) {
+						romanoANum = romanoANum + Integer.parseInt(valsLetrasRomanas[h][1]);
+					}
+		        }
+	        }
+		}
 		
-		switch(pnumRomano){
-			case "": 
-				numRetorno = 0;
-			case "I": 
-				numRetorno = 1;
-			case "II": 
-				numRetorno = 2; 
-			case "III": 
-				numRetorno = 3;  
-			case "IIII": 
-				numRetorno = -1;  
-			case "V": 
-				numRetorno = 5; 
-			case "X": 
-				numRetorno = 10;
-			case "L": 
-				numRetorno = 50; 
-			case "C": 
-				numRetorno = 100; 
-			case "D": 
-				numRetorno = 500;
-	    }   
-		
-		return numRetorno;
+		return romanoANum;
 	}
 }

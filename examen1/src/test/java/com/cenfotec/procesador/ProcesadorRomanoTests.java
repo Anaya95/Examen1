@@ -5,18 +5,19 @@ import static org.junit.Assert.*;
 
 public class ProcesadorRomanoTests {
 	
-	@Test
+	/*@Test
 	public void testStringVacio() {
 		ProcesadorRomano procRomano = new ProcesadorRomano();
 		int romanoEnNum = procRomano.procesar("");
 		assertEquals(romanoEnNum,0);
-	}
+	}*/
 	
 	@Test
 	public void testValoresLetras() {
 		
-		String [][] valoresPruebas = {{"I","1"},{"II","2"},{"III","3"},{"IIII","Error"},{"V","5"},{"X","10"},
-				 					 {"L","50"},{"C","100"},{"D","500"},{"M","1000"}};
+		String [][] valoresPruebas={{"I","1"},{"II","2"},{"III","3"},{"IIII","Error"},
+									{"V","5"},{"X","10"},{"L","50"},{"C","100"},
+									{"D","500"},{"M","1000"}};
 		
 		ProcesadorRomano procRomano = new ProcesadorRomano();
 		int romanoEnNum;
